@@ -220,9 +220,9 @@ const BarcodeScanner = () => {
             value={selectedCameraId}
           >
             {cameraDevices.map((device) => (
-              <option key={device.id} value={device.id}>
+              <button key={device.id} value={device.id}>
                 {device.label || `Camera ${device.id}`}
-              </option>
+              </button>
             ))}
           </select>
         </div>
@@ -234,7 +234,8 @@ const BarcodeScanner = () => {
           <button
             onClick={() => setIsScanning(true)}
             className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600
-     hover:to-indigo-700 text-white px-6 py-3 rounded-xl font-semibold shadow-xl font-poppins text-sm sm:text-base"
+              hover:to-indigo-700 text-white sm:px-4 lg:px-8 py-2 rounded-xl font-semibold shadow-xl
+               font-poppins text-sm sm:text-base"
           >
             📷 Start Scan
           </button>
