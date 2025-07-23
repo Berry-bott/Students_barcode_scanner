@@ -392,9 +392,9 @@ const BarcodeScanner = () => {
                   }`}
               >
                 {device.label?.toLowerCase().includes("front")
-                  ? "📱 Front Camera"
+                  ? " Front📷 "
                   : device.label?.toLowerCase().includes("back")
-                  ? "🎯 Back Camera"
+                  ? " Back 📷 "
                   : `Camera ${index + 1}`}
               </button>
             ))}
