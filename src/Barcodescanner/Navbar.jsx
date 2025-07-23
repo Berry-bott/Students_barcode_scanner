@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Menu, X, ScanIcon } from "lucide-react";
-
-
-
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/AuthProvider");
+  };
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -15,12 +17,11 @@ export default function Navbar() {
     }
     setIsMenuOpen(false);
   };
-  return (
 
+  return (
     <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm z-50 font-poppins">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <ScanIcon className="h-8 w-8 text-blue-600" />
@@ -40,9 +41,11 @@ export default function Navbar() {
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
             ))}
-
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full hover:opacity-90 shadow-md transition font-semibold">
-              Get Started
+            <button
+              onClick={handleClick}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-2 rounded-full hover:opacity-90 shadow-md transition font-semibold"
+            >
+              LOGIN
             </button>
           </div>
 
@@ -58,7 +61,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}  
+      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 shadow-lg font-medium text-lg">
           <div className="px-4 py-3 space-y-2">
@@ -71,13 +74,15 @@ export default function Navbar() {
                 {item.charAt(0).toUpperCase() + item.slice(1)}
               </button>
             ))}
-            <button className="w-full mt-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full hover:opacity-90 transition font-semibold shadow-md">
-              Get Started
+            <button
+              onClick={handleClick}
+              className="w-full mt-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full hover:opacity-90 transition font-semibold shadow-md"
+            >
+              Login
             </button>
           </div>
         </div>
       )}
     </nav>
-
-  )
+  );
 }
