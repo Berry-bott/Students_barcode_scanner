@@ -391,11 +391,19 @@ const BarcodeScanner = () => {
                       : "bg-gray-100 text-gray-800 hover:bg-gray-200"
                   }`}
               >
-                {device.label?.toLowerCase().includes("front")
-                  ? " <div className> <div>Front</div> <div>📷</div>  </div>"
-                  : device.label?.toLowerCase().includes("back")
-                  ? " <div> <div>Back</div> <div>📷</div>  </div>"
-                  : `Camera ${index + 1}`}
+                {device.label?.toLowerCase().includes("front") ? (
+                  <div className="flex items-center gap-2">
+                    <span>Front</span>
+                    <span>📷</span>
+                  </div>
+                ) : device.label?.toLowerCase().includes("back") ? (
+                  <div className="flex items-center gap-2">
+                    <span>Back</span>
+                    <span>📷</span>
+                  </div>
+                ) : (
+                  <span>Camera {index + 1}</span>
+                )}
               </button>
             ))}
           </div>
