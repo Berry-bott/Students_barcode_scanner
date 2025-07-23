@@ -384,7 +384,7 @@ const BarcodeScanner = () => {
               <button
                 key={device.id}
                 onClick={() => setSelectedCameraId(device.id)}
-                className={`px-8 py-2 rounded-lg font-medium text-sm transition
+                className={`px-8 py-0 rounded-lg font-medium text-sm transition
                   ${
                     selectedCameraId === device.id
                       ? "bg-blue-600 text-white"
