@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
   	extend: {
+			 fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+    },
   		colors: {
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',

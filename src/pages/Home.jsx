@@ -1,85 +1,21 @@
-import { useState } from "react";
-import { Menu, X, ScanIcon } from "lucide-react";
+
 import { ArrowRight, Play, CheckCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import Features from './Features'
 import Benefits from "./Benefits";
+import Navbar from "../Barcodescanner/Navbar";
 import Footer from "./Footer";
 import Barcodescanner from "../Barcodescanner/Scanner";
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMenuOpen(false);
-  };
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <ScanIcon className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-semibold text-gray-900">AttendanceTracker</span>
-            </div>
+    {/* Navbar section */}
+      <Navbar />
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-6 items-center">
-              {["home", "features", "benefits"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="text-gray-600 hover:text-blue-600 transition font-medium"
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </button>
-              ))}
-              <button
-
-                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">
-                Get Started
-              </button>
-            </div>
-
-            {/* Mobile Menu Icon */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-md hover:bg-gray-100 transition"
-              >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu Dropdown */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
-            <div className="px-4 py-3 space-y-2">
-              {["home", "features", "benefits"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="block w-full text-left text-gray-600 hover:text-blue-600 py-2 transition font-medium"
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </button>
-              ))}
-              <button className="w-full mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">
-                Get Started
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
 
       {/* Hero Section */}
       <section id="home" className="pt-20 sm:pt-24 pb-16 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
@@ -134,9 +70,14 @@ export default function Home() {
 
             {/* Right Column - Illustration */}
             {/* BARCODE SCANNER IMPLIMENTATION */}
-            <div className="relative mx-auto w-full max-w-[350px] sm:max-w-[400px] h-[300px] sm:h-[400px] border-2 border-gray-200 rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative mx-auto w-full max-w-[430px] sm:max-w-[500px] sm:max-h-[500px]  h-[400px] sm:h-[422px] border border-b rounded-2xl overflow-hidden shadow-2xl">
+              <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-transparent
+               bg-clip-text tracking-wide drop-shadow-2xl uppercase font-poppins mb-6 mt-3">
+                Scan Barcode
+              </h1>
+
               <Barcodescanner />
-           
+
             </div>
           </div>
         </div>
