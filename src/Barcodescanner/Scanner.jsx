@@ -371,7 +371,7 @@ const BarcodeScanner = () => {
             id="reader"
             ref={scannerRef}
             className="rounded-lg overflow-hidden"
-            style={{ minHeight: "300px" }}
+            style={{ minHeight: "250px" }}
           ></div>
         </div>
       )}
@@ -384,7 +384,7 @@ const BarcodeScanner = () => {
               <button
                 key={device.id}
                 onClick={() => setSelectedCameraId(device.id)}
-                className={`px-4 py-2 rounded-lg font-medium text-sm transition
+                className={`px-2 py-2 rounded-lg font-medium text-sm transition
                   ${
                     selectedCameraId === device.id
                       ? "bg-blue-600 text-white"
@@ -392,9 +392,9 @@ const BarcodeScanner = () => {
                   }`}
               >
                 {device.label?.toLowerCase().includes("front")
-                  ? " Front📷 "
+                  ? "Front📷"
                   : device.label?.toLowerCase().includes("back")
-                  ? " Back 📷 "
+                  ? "Back📷"
                   : `Camera ${index + 1}`}
               </button>
             ))}
