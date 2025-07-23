@@ -214,7 +214,7 @@ const BarcodeScanner = () => {
       {/* Camera Selector */}
       {!isScanning && cameraDevices.length > 1 && (
         <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-50">
-          <select
+          <div
             className="px-4 py-2 rounded-lg border shadow"
             onChange={(e) => setSelectedCameraId(e.target.value)}
             value={selectedCameraId}
@@ -224,7 +224,7 @@ const BarcodeScanner = () => {
                 {device.label || `Camera ${device.id}`}
               </button>
             ))}
-          </select>
+          </div>
         </div>
       )}
 
