@@ -72,7 +72,7 @@ export default function Home() {
 
             {/* Right Column - Illustration */}
             {/* BARCODE SCANNER IMPLIMENTATION */}
-            <div className="relative mx-auto w-full max-w-[430px] sm:max-w-[500px] sm:max-h-[700px]  h-[500px] sm:h-[422px] border border-b rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative mx-auto w-full max-w-[430px] sm:max-w-[500px] sm:max-h-[600px]  h-[500px] sm:h-[422px] border border-b rounded-2xl overflow-hidden shadow-2xl">
               <h1
                 className="text-4xl font-bold text-center bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-transparent
                bg-clip-text tracking-wide drop-shadow-2xl uppercase font-poppins mb-6 mt-3"
