@@ -101,6 +101,7 @@ const BarcodeScanner = () => {
       {/* Camera Selector */}
       {!isScanning && cameraDevices.length > 1 && (
         <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-50">
+          {" "}
           <div className="flex gap-4 bg-white shadow-xl px-8 py-2 rounded-xl border border-gray-300">
             {cameraDevices.slice(0, 2).map((device, index) => (
               <button

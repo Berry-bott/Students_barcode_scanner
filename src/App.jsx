@@ -34,7 +34,7 @@ function App() {
 
         {/* Dashboard main route with tabs inside */}
         <Route path="dashboard" element={<Dashboard />}>
-          <Route index element={<Dashboard />} />
+          <Route index element={<Overview />} />
           {/* <Route path="classes" element={<Classes />} /> */}
           <Route path="overview" element={<Overview />} />
           <Route path="attendance" element={<Attendance />} />
