@@ -1,7 +1,5 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabaseClient"
+import { supabase } from "../../lib/supabaseClient";
 
 const Attendance = () => {
   const [records, setRecords] = useState([]);
@@ -11,7 +9,7 @@ const Attendance = () => {
     const fetchAttendance = async () => {
       const { data, error } = await supabase
         .from("attendance")
-        .select("reg_num, time, date, status, students(name)")
+        .select("id, reg_num, time, date, status, students(name)")
         .order("date", { ascending: false });
 
       if (error) {
@@ -53,7 +51,15 @@ const Attendance = () => {
                 <td className="p-2 border">{record.reg_num}</td>
                 <td className="p-2 border">{record.students?.name || "—"}</td>
                 <td className="p-2 border">{record.date}</td>
-                <td className="p-2 border">{record.time}</td>
+                <td className="p-2 border">
+                  {record.time
+                    ? new Date(`1970-01-01T${record.time}Z`).toLocaleTimeString("en-US", {
+                        hour: "numeric",
+                        minute: "2-digit",
+                        hour12: true,
+                      })
+                    : "—"}
+                </td>
                 <td className="p-2 border capitalize">{record.status}</td>
               </tr>
             ))}
