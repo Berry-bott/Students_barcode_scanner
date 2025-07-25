@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { Eye, EyeOff, Shield, AlertCircle, CheckCircle2 } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input, Label, Checkbox } from "../components/ui/formelments";
-import { Alert, AlertDescription } from "../components/ui/alerts";
 import { supabase } from "../lib/supabaseClient";
+import { Link, useNavigate } from "react-router-dom";
 
-export function LoginForm() {
-  const [showPassword, setShowPassword] = useState(false);
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,107 +25,71 @@ export function LoginForm() {
       setError(error.message);
     } else {
       setSuccess(true);
+
+      // Redirect to dashboard after success
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
     }
 
     setLoading(false);
   };
 
   return (
-    <form className="space-y-4" onSubmit={handleLogin}>
-      {error && (
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+        <form onSubmit={handleLogin}>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-1">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
 
-      {success && (
-        <Alert className="border-green-200 bg-green-50 text-green-800">
-          <CheckCircle2 className="h-4 w-4" />
-          <AlertDescription>Authentication successful! Redirecting...</AlertDescription>
-        </Alert>
-      )}
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-1">Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="email" className="text-sm font-medium">Email</Label>
-        <Input
-          id="email"
-          type="email"
-          placeholder="Enter your email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={loading}
-        />
-      </div>
+          {error && (
+            <div className="mb-4 text-sm text-red-600 font-medium bg-red-100 p-2 rounded">
+              {error}
+            </div>
+          )}
 
-      <div className="space-y-2">
-        <Label htmlFor="password" className="text-sm font-medium">Password</Label>
-        <div className="relative">
-          <Input
-            id="password"
-            type={showPassword ? "text" : "password"}
-            placeholder="Enter your password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+          {success && (
+            <div className="mb-4 text-sm text-green-600 font-medium bg-green-100 p-2 rounded">
+              Login successful! Redirecting...
+            </div>
+          )}
+
+          <button
+            type="submit"
             disabled={loading}
-            className="h-11 pr-10"
-          />
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-            onClick={() => setShowPassword(!showPassword)}
-            disabled={loading}
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
           >
-            {showPassword ? (
-              <EyeOff className="h-4 w-4 text-slate-400" />
-            ) : (
-              <Eye className="h-4 w-4 text-slate-400" />
-            )}
-          </Button>
-        </div>
-      </div>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
 
-      <div className="flex items-center space-x-2">
-        <Checkbox
-          id="remember"
-          name="rememberMe"
-          checked={rememberMe}
-          onCheckedChange={(checked) => setRememberMe(!!checked)}
-          disabled={loading}
-        />
-        <Label
-          htmlFor="remember"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Remember me for 30 days
-        </Label>
+        <p className="text-sm text-center mt-4">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-blue-600 hover:underline">
+            Register
+          </Link>
+        </p>
       </div>
-
-      <Button
-        type="submit"
-        className="w-full h-11 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-        disabled={loading}
-      >
-        {loading ? (
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            <span>Signing in...</span>
-          </div>
-        ) : (
-          <div className="flex items-center space-x-2">
-            <Shield className="w-4 h-4" />
-            <span>Sign In</span>
-          </div>
-        )}
-      </Button>
-
-      <div className="text-center pt-4">
-        <p className="text-xs text-slate-500">Having trouble? Contact your system administrator</p>
-      </div>
-    </form>
+    </div>
   );
 }
