@@ -1,4 +1,3 @@
-// pages/Attendance.jsx
 import React from "react";
 
 const Attendance = () => {

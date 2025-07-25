@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import { XIcon } from "lucide-react";
 
+
 const BarcodeScanner = () => {
   const scannerRef = useRef(null);
   const html5QrCodeRef = useRef(null);
