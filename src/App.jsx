@@ -12,7 +12,8 @@ import Dashboard from "./dashboard/pages/Dashboard";
 import Students from "./dashboard/pages/Students";
 import Attendance from "./dashboard/pages/Attendance";
 import Reports from "./dashboard/pages/Reports";
-import Settings from "./dashboard/pages/Settings";
+import Settings from "./dashboard/pages/Settings"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 // These are the new components inside Dashboard
 import Overview from "./dashboard/pages/Overview";
@@ -25,7 +26,14 @@ function App() {
       <Route path="/" element={<Home />} />
 
       {/* Auth route */}
-      <Route path="/AuthProvider" element={<AuthProvider />} />
+      <Route
+        path="/AuthProvider"
+        element={
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Dashboard layout */}
       <Route path="/dashboard" element={<Layout />}>

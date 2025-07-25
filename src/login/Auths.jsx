@@ -1,57 +1,11 @@
-
-// // }
-
-
-// import React, { useState } from "react"
-// import { useNavigate } from "react-router-dom"
-
-// export default function AuthProvider() {
-//   // const { login } = useAuth()
-//   // const navigate = useNavigate()
-//   // const [username, setUsername] = useState("")
-//   // const [password, setPassword] = useState("")
-//   // const [error, setError] = useState("")
-
-//   // const handleSubmit = async (e) => {
-//   //   e.preventDefault()
-//   //   const success = await login(username, password)
-//   //   if (success) {
-//   //     navigate("/dashboard") // or wherever you want to go
-//   //   } else {
-//   //     setError("Invalid credentials")
-//   //   }
-//   // }
-
-//   return (
-//     // <form onSubmit={handleSubmit}>
-//     //   <input
-//     //     type="text"
-//     //     placeholder="Username"
-//     //     value={username}
-//     //     onChange={(e) => setUsername(e.target.value)}
-//     //     required
-//     //   />
-//     //   <input
-//     //     type="password"
-//     //     placeholder="Password"
-//     //     value={password}
-//     //     onChange={(e) => setPassword(e.target.value)}
-//     //     required
-//     //   />
-//     //   <button type="submit">Login</button>
-//     //   {error && <p style={{ color: "red" }}>{error}</p>}
-//     // </form>
-//     <div>
-//       <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique accusamus dolor soluta, quidem quibusdam eos laborum dolorum consequuntur blanditiis porro dignissimos voluptates sit nam dolores ex perspiciatis harum dolore ut.</h1>
-//     </div>
-//   )
-// }
-
-
+import { useState } from "react"
 import { LoginForm } from "./LoginForm"
+import { RegisterForm } from "./RegisterForm"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
 
 export default function AuthProvider() {
+  const [showRegister, setShowRegister] = useState(false)
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-4">
       <div className="w-full max-w-md">
@@ -64,19 +18,34 @@ export default function AuthProvider() {
           <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Super Admin Portal</h1>
           <p className="text-slate-600 dark:text-slate-400 mt-2">Secure access to administrative controls</p>
         </div>
-        
+
         <Card className="shadow-xl border-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
           <CardHeader className="space-y-1 pb-4">
-            <CardTitle className="text-xl font-semibold text-center">Sign In</CardTitle>
+            <CardTitle className="text-xl font-semibold text-center">
+              {showRegister ? "Create Account" : "Sign In"}
+            </CardTitle>
             <CardDescription className="text-center">
-              Enter your credentials to access the admin dashboard
+              {showRegister
+                ? "Register for admin access"
+                : "Enter your credentials to access the admin dashboard"}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <LoginForm />
+            {showRegister ? <RegisterForm /> : <LoginForm />}
           </CardContent>
         </Card>
-        
+
+        <div className="mt-4 text-center">
+          <button
+            onClick={() => setShowRegister(!showRegister)}
+            className="text-sm text-blue-600 hover:underline dark:text-blue-400"
+          >
+            {showRegister
+              ? "Already have an account? Sign in"
+              : "Don’t have an account? Register here"}
+          </button>
+        </div>
+
         <div className="mt-6 text-center">
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Protected by enterprise-grade security
@@ -86,4 +55,4 @@ export default function AuthProvider() {
     </div>
   )
 }
-// 
+ 
