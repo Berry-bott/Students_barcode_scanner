@@ -7,7 +7,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/AuthProvider");
+    navigate("/login");
   };
 
   const scrollToSection = (sectionId) => {
