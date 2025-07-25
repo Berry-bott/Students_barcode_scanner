@@ -17,25 +17,24 @@ export default function Dashboard() {
       <div className="min-h-screen flex flex-col bg-gray-100">
         {/* Header */}
         <Topbar />
-        <div className="px-16 pt-20 ">
+        <div className="px-20 pt-20 m-4 border">
           <h1 className="text-3xl font-bold text-gray-800 mb-2 font-poppins">
             Dashboard
           </h1>
-          <h2 className="text-xl font-semibold text-blue-700 mb-1 px-4 font-poppins">
-            Hi, Admin 👋
+          <h2 className="text-sm  text-gray-400 mb-1  font-poppins">
+            Welcome back,{" "}
+            <span className="text-2xl text-blue-700"> Admin 👋</span>
           </h2>
-          <p className="text-sm text-gray-500 font-poppins px-6">
-            Welcome back
-          </p>
+          <p className="text-sm text-gray-500 font-poppins px-6"></p>
         </div>
 
         {/* Tabs */}
-        <div className="my-8 mx-12 p-1 bg-blue-100 rounded-lg">
+        <div className="my-8 mx-[98px] p-1 bg-blue-100 rounded-lg">
           <Tabswitcher />
         </div>
 
         {/* Tab content will render here */}
-        <div className="px-4 border h-[vh]">
+        <div className="mx-20 border ">
           <Outlet />
         </div>
 

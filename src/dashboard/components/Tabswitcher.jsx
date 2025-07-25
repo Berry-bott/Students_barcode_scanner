@@ -12,12 +12,12 @@ export default function TabSwitcher() {
   const location = useLocation();
 
   return (
-    <div className="flex justify-around border-b px-2">
+    <div className="flex justify-around px-2 ">
       {tabs.map(({ label, path }) => (
         <button
           key={path}
           onClick={() => navigate(path)}
-          className={`px-10 py-2 text-sm rounded-md transition-all duration-200 
+          className={`px-32 py-2 text-sm rounded-md transition-all duration-200 
           ${
             location.pathname === path
               ? "bg-white font-medium shadow font-poppins"
