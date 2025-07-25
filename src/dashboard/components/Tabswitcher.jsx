@@ -1,10 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
 const tabs = [
-  { label: "Overview", path: "/dashboard/dashboard/overview" },
+  { label: "Overview", path: "/dashboard/overview" },
   // { label: "Classes", path: "/dashboard/dashboard/classes" },
-  { label: "Attendance", path: "/dashboard/dashboard/attendance" },
-  { label: "Reports", path: "/dashboard/dashboard/reports" },
+  { label: "Attendance", path: "/dashboard/attendance" },
+  { label: "Reports", path: "/dashboard/reports" },
 ];
 
 export default function TabSwitcher() {

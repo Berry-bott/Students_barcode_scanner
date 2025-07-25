@@ -1,18 +1,12 @@
-import {
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import NotFound from "./pages/NotFound";
-
 import AuthProvider from "./auth/AuthProvider";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Layout from "./dashboard/components/Layout";
-// import Dashboard from "./dashboard/pages/Dashboard";
+import Dashboard from "./dashboard/pages/Dashboard";
 import Overview from "./dashboard/pages/Overview";
 import Students from "./dashboard/pages/Students";
 import Attendance from "./dashboard/pages/Attendance";
@@ -21,53 +15,35 @@ import Settings from "./dashboard/pages/Settings";
 
 function App() {
   return (
-      <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Layout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="/dashboard/overview" />} />
-            <Route path="overview" element={<Overview />} />
-            <Route path="students" element={<Students />} />
-            <Route path="attendance" element={<Attendance />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="/dashboard" />} />
+          <Route path="overview" element={<Overview />} />
+          <Route path="students" element={<Students />} />
+          <Route path="attendance" element={<Attendance />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
 
-          {/* <Route path="*" element={<NotFound />} /> */}
-        </Routes>
-      </AuthProvider>
+        {/* <Route path="*" element={<NotFound />} /> */}
+      </Routes>
+    </AuthProvider>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import {
 //   BrowserRouter as Router,
