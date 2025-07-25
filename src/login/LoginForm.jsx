@@ -28,7 +28,7 @@ export default function Login() {
 
       // Redirect to dashboard after success
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/");
       }, 1500);
     }
 
