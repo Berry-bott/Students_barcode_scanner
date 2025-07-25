@@ -4,7 +4,8 @@ const tabs = [
   { label: "Overview", path: "/dashboard/overview" },
   // { label: "Classes", path: "/dashboard/dashboard/classes" },
   { label: "Attendance", path: "/dashboard/attendance" },
-  { label: "Reports", path: "/dashboard/reports" },
+  { label: "Students", path: "/dashboard/students" },
+  // { label: "Reports", path: "/dashboard/reports" },
 ];
 
 export default function TabSwitcher() {
