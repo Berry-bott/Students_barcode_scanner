@@ -93,6 +93,8 @@
 // }
 
 import Barcodescanner from "../../Barcodescanner/Scanner";
+import { supabase } from "../../lib/supabaseClient"; // adjust path as needed
+import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { Bell, CircleUser, Sun, QrCode, X } from "lucide-react";
@@ -101,6 +103,9 @@ export default function Topbar() {
   const [active, setActive] = useState(null);
   const [theme, setTheme] = useState("light");
   const [showScanner, setShowScanner] = useState(false); // 👈 for scanner modal
+
+  // Inside your Topbar component
+  const navigate = useNavigate();
 
   const handleClick = (name) => {
     if (name === active) {
@@ -191,7 +196,10 @@ export default function Topbar() {
                 </button>
                 <button
                   className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-zinc-800"
-                  onClick={() => alert("Logging out")}
+                  onClick={async () => {
+                    await supabase.auth.signOut();
+                    navigate("/"); // 👈 redirect to landing page
+                  }}
                 >
                   Logout
                 </button>
