@@ -38,6 +38,7 @@ const Students = () => {
                 <th className="border px-4 py-3">Name</th>
                 <th className="border px-4 py-3">Gender</th>
                 <th className="border px-4 py-3">Department</th>
+                <th className="border px-4 py-3">Parent Email</th>
               </tr>
             </thead>
             <tbody>
@@ -50,6 +51,7 @@ const Students = () => {
                   <td className="border px-4 py-2">{student.name}</td>
                   <td className="border px-4 py-2">{student.gender}</td>
                   <td className="border px-4 py-2">{student.department}</td>
+                  <td className="border px-4 py-2">{student.parent_email}</td>
                 </tr>
               ))}
             </tbody>
