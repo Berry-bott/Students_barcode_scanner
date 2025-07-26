@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
+
 export default function Overview() {
   const [attendanceData, setAttendanceData] = useState([]);
   const [stats, setStats] = useState({
