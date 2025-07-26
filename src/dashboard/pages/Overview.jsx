@@ -137,7 +137,7 @@ export default function Overview() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 0.5 } }}
       >
-        <h2 className="text-2xl font-semibold text-red-500 mb-4 dark:text-red-400">
+        <h2 className="text-2xl font-semibold text-red-500 mb-4 dark:text-red-400 text-center sm:text-left">
           Students Attendance Overview
         </h2>
         <div className="overflow-y-auto rounded-lg shadow border h-[400px] dark:border-gray-700">
