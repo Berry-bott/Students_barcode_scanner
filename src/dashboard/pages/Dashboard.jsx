@@ -29,7 +29,7 @@ export default function Dashboard() {
       </div>
 
       {/* Tab Content */}
-      <div className="flex-grow px-4 sm:px-6 lg:px-10 py-6">
+      <div className="flex-grow px-1 sm:px-6 lg:px-10 py-6">
         <Outlet />
       </div>
     </div>
