@@ -95,9 +95,9 @@
 import Barcodescanner from "../../Barcodescanner/Scanner";
 import { supabase } from "../../lib/supabaseClient"; // adjust path as needed
 import { useNavigate } from "react-router-dom";
-
+import { Button } from "../../components/ui/button";
 import { useState } from "react";
-import { Bell, CircleUser, Sun, QrCode, X } from "lucide-react";
+import { Bell, CircleUser, Sun, QrCode, X, Download } from "lucide-react";
 
 export default function Topbar() {
   const [active, setActive] = useState(null);
@@ -132,6 +132,39 @@ export default function Topbar() {
         ? "border-blue-500 bg-blue-100 text-blue-600"
         : "border-gray-300 text-gray-600 hover:bg-gray-100 hover:border-gray-400"
     }`;
+  const handleExport = async () => {
+    const { data: records, error } = await supabase
+      .from("attendance")
+      .select("id, reg_num, time, date, status, students(name)");
+
+    if (error) {
+      console.error("Error fetching data:", error);
+      return;
+    }
+
+    const headers = ["Reg. Number", "Name", "Date", "Time", "Status"];
+    const csvRows = [
+      headers.join(","),
+      ...records.map((record) =>
+        [
+          record.reg_num,
+          record.students?.name || "",
+          record.date,
+          record.time,
+          record.status,
+        ].join(",")
+      ),
+    ];
+
+    const csvContent = "data:text/csv;charset=utf-8," + csvRows.join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "attendance.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -205,6 +238,11 @@ export default function Topbar() {
                 </button>
               </div>
             )}
+          </div>
+          <div>
+            <Button onClick={handleExport} className="flex items-center gap-2">
+              <Download className="w-4 h-4" />
+            </Button>
           </div>
         </div>
       </header>
