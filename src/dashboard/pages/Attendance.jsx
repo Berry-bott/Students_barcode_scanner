@@ -30,7 +30,7 @@ const Attendance = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">
+      <h2 className="text-xl font-bold text-gray-800 mb-4 dark:text-white">
         Attendance Records
       </h2>
 

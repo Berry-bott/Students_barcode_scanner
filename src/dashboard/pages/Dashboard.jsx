@@ -4,34 +4,34 @@ import Tabswitcher from "../components/Tabswitcher";
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-[hsl(222_47%_11%)] dark:text-white font-poppins transition-colors duration-300">
       {/* Header */}
       <Topbar />
 
       {/* Welcome Section */}
-      <div className="px-4 sm:px-6 lg:px-10 pt-24">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 font-poppins mb-1">
+      <section className="px-4 sm:px-6 lg:px-10 pt-24 space-y-1">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white">
           Dashboard
         </h1>
-        <h2 className="text-sm text-gray-500 font-poppins">
+        <p className="text-sm sm:text-base text-gray-500 dark:text-gray-300">
           Welcome back,{" "}
-          <span className="text-lg sm:text-2xl text-blue-700 font-semibold">
+          <span className="text-blue-700 dark:text-blue-400 font-semibold text-base sm:text-lg">
             Admin 👋
           </span>
-        </h2>
-      </div>
+        </p>
+      </section>
 
-      {/* Tabs */}
-      <div className="px-4 sm:px-6 lg:px-10 mt-6">
-        <div className="bg-blue-100 p-2 sm:p-3 rounded-lg shadow-sm">
+      {/* Tabswitcher */}
+      <section className="px-4 sm:px-6 lg:px-10 mt-6">
+        <div className="bg-blue-100 dark:bg-blue-950/20 p-3 sm:p-4 rounded-xl shadow-md border border-blue-200 dark:border-blue-900">
           <Tabswitcher />
         </div>
-      </div>
+      </section>
 
       {/* Tab Content */}
-      <div className="flex-grow px-1 sm:px-6 lg:px-10 py-6">
+      <main className="flex-grow px-4 sm:px-6 lg:px-10 py-6">
         <Outlet />
-      </div>
+      </main>
     </div>
   );
 }

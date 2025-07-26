@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 
-
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,25 +20,32 @@ const Students = () => {
   }, []);
 
   return (
-    <div className="px-4">
+    <div className="px-4 sm:px-6 lg:px-10 py-6">
       {loading ? (
-        <p>Loading...</p>
+        <p className="text-center text-gray-600 dark:text-gray-300">
+          Loading...
+        </p>
       ) : students.length === 0 ? (
-        <p>No student records found.</p>
+        <p className="text-center text-gray-600 dark:text-gray-300">
+          No student records found.
+        </p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300 bg-white text-sm text-left">
-            <thead className="bg-gray-100 text-gray-700">
+        <div className="overflow-x-auto rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+          <table className="min-w-full text-sm text-left bg-white dark:bg-[hsl(222_47%_11%)] dark:text-gray-100">
+            <thead className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
               <tr>
-                <th className="border px-4 py-2">Registration Number</th>
-                <th className="border px-4 py-2">Name</th>
-                <th className="border px-4 py-2">Gender</th>
-                <th className="border px-4 py-2">Department</th>
+                <th className="border px-4 py-3">Registration Number</th>
+                <th className="border px-4 py-3">Name</th>
+                <th className="border px-4 py-3">Gender</th>
+                <th className="border px-4 py-3">Department</th>
               </tr>
             </thead>
             <tbody>
               {students.map((student) => (
-                <tr key={student.id} className="hover:bg-gray-50">
+                <tr
+                  key={student.id}
+                  className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                >
                   <td className="border px-4 py-2">{student.reg_num}</td>
                   <td className="border px-4 py-2">{student.name}</td>
                   <td className="border px-4 py-2">{student.gender}</td>
