@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthProvider from "./auth/AuthProvider";
 import ProtectedRoute from "./auth/ProtectedRoute";
-import Layout from "./dashboard/components/Layout";
 import Dashboard from "./dashboard/pages/Dashboard";
 import Overview from "./dashboard/pages/Overview";
 import Students from "./dashboard/pages/Students";
